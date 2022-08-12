@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#SSH CONFIGURATION
+#private key ~/.ssh/school
+#Your SSH client configuration must be configured
+#to refuse to authenticate using a password
+Host 3.88.206.0
+     PasswordAuthentication no
+     IdentityFile ~/.ssh/school
