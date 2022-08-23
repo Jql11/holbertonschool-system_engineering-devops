@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#Configure your both web-01 and web-02 to be identical
+# add custom header in http header
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo service nginx start
+
+sudo sh -c 'echo "Hello World" > /var/www/html/index.nginx-debian.html'
+sudo sed -i '/listen \[::\]:80 default_server;/a rewrite ^/redirect_me/(.*)$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
+sudo sed -i '/listen \[::\]:80 default_server;/a error_page 404 /custom_404.html; location = /custom_404.html {root /usr/share/nginx/html; internal;}' /etc/nginx/sites-available/default
+sudo sed -i '/location/a add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-available/default
+sudo service nginx restart
