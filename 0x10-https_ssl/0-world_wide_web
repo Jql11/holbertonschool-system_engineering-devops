@@ -6,7 +6,7 @@ subdomain=('www' 'lb-01' 'web-01' 'web-02')
 print_info(){
 	 printf "The subdomain %s is a " "$2"
 	 dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ print $4 }' | tr -d '\n'
-	 printf "record and points to "
+	 printf " record and points to "
 	 dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ print $5 }' | tr -d '\n'
 	 printf "\n"
 }
