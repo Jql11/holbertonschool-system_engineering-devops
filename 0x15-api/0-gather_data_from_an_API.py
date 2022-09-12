@@ -23,4 +23,4 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):".format(
         response.json().get('name'), completed_task, total_task))
     for item in TASK_TITLE:
-        print("\t{}".format(item))
+        print("\t {}".format(item))
