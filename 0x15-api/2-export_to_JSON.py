@@ -20,11 +20,11 @@ if __name__ == "__main__":
             dictionary = {}
             TASK_COMPLETED_STATUS = task.get('completed')
             TASK_TITLE = task.get('title')
-            dictionary["task"] = "{}".format(TASK_TITLE)
-            dictionary["completed"] = "{}".format(TASK_COMPLETED_STATUS)
-            dictionary["username"] = "{}".format(USERNAME)
+            dictionary["task"] = TASK_TITLE
+            dictionary["completed"] = TASK_COMPLETED_STATUS
+            dictionary["username"] = USERNAME
             tasks.append(dictionary)
         output = {
-                "{}".format(sys.argv[1]): tasks
+                "{}".format(USER_ID): tasks
         }
         json.dump(output, outfile)
