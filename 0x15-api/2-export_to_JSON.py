@@ -15,6 +15,7 @@ if __name__ == "__main__":
     USERNAME = response.json().get('username')
 
     with open("{}.json".format(USER_ID), "w") as outfile:
+        output = {}
         tasks = []
         for task in todo.json():
             dictionary = {}
@@ -24,7 +25,5 @@ if __name__ == "__main__":
             dictionary["completed"] = "{}".format(TASK_COMPLETED_STATUS)
             dictionary["username"] = "{}".format(USERNAME)
             tasks.append(dictionary)
-        output = {
-                "{}".format(sys.argv[1]): "{}".format(tasks)
-        }
+        output[sys.argv[1]] = tasks
         json.dump(output, outfile)
